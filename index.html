@@ -1,266 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For You ❤️</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #ffd6e0;
-  overflow: hidden;
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:#ffe6ea;
+overflow:hidden;
 }
 
-.slide {
-  width: 100vw;
-  height: 100vh;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 30px;
-  position: relative;
+/* SLIDES */
+
+.slide{
+width:100vw;
+height:100vh;
+display:none;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+box-sizing:border-box;
 }
 
-.active { display: flex; }
-
-/* Falling hearts */
-.heart {
-  position: absolute;
-  top: -20px;
-  font-size: 18px;
-  animation: fall linear forwards;
+.active{
+display:flex;
 }
 
-@keyframes fall {
-  to { transform: translateY(110vh); opacity: 0.6; }
+/* TEXT BOX */
+
+.message-box{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+max-width:500px;
+font-size:18px;
+line-height:1.6;
 }
 
-/* Drawn white hearts */
-.draw-heart {
-  position: absolute;
-  border: 2px solid white;
-  width: 20px;
-  height: 20px;
-  transform: rotate(45deg);
-  border-radius: 4px;
-  opacity: 0;
-  animation: drawFade 4s ease forwards;
+/* BUTTON */
+
+button{
+margin-top:25px;
+padding:12px 28px;
+border:none;
+border-radius:25px;
+background:#ff6b81;
+color:white;
+font-size:16px;
+cursor:pointer;
 }
 
-@keyframes drawFade {
-  0% { opacity: 0; transform: scale(0.5) rotate(45deg); }
-  50% { opacity: 1; }
-  100% { opacity: 0; transform: scale(1.4) rotate(45deg); }
+/* TYPING EFFECT */
+
+.typing{
+border-right:none;
+white-space:normal;
+overflow:visible;
+animation:typing 4s steps(80,end);
 }
 
-.note {
-  background: rgba(255,255,255,0.9);
-  padding: 25px;
-  border-radius: 16px;
-  max-width: 650px;
-  color: #c2185b;
-  line-height: 1.5;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+@keyframes typing{
+from{opacity:0}
+to{opacity:1}
 }
 
-button {
-  margin-top: 25px;
-  padding: 12px 24px;
-  border: none;
-  background: #ff4b7d;
-  color: white;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
+/* HEART FLOATING */
+
+.heart{
+position:absolute;
+font-size:18px;
+animation:float 6s linear infinite;
 }
 
-/* Envelope */
-.envelope {
-  width: 220px;
-  height: 150px;
-  background: #fff;
-  position: relative;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-  overflow: hidden;
+@keyframes float{
+0%{transform:translateY(100vh);opacity:1}
+100%{transform:translateY(-10vh);opacity:0}
 }
-
-.letter {
-  position: absolute;
-  bottom: -160px;
-  width: 100%;
-  height:auto;
-  min-height: 160px;
-  background: #fff;
-  padding: 15px;
-  font-size: 15px;
-  line-height: 1.4;
-  animation: pullLetter 3s forwards;
-}
-
-@keyframes pullLetter {
-  to { bottom: 0; }
-}
-
-/* Typing effect */
-.typing {
-  border-right: none;
-  white-space: normal;
-  overflow: visible;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-/* Heartbeat */
-.beat {
-  font-size: 28px;
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  animation: beat 1s infinite;
-}
-
-@keyframes beat {
-  0%,100%{ transform: scale(1); }
-  50%{ transform: scale(1.2); }
-}
-
-/* Speech reveal */
-.speech { font-size: 20px; color:#c2185b; }
-
-.bigYes {
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:#ffd6e0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-}
-
 </style>
 </head>
 
 <body>
 
 <!-- SLIDE 1 -->
+
 <div class="slide active" id="slide1">
-  <div class="note">
-  Here I am, for the very first time, I tried to build something very different for you, as you always make me feel special. 
-  <br><br>
-  So there's a small thing I made for you, just so you can feel how special you are to me.
-  <br><br>
-  I hope you like it and this brings a smile on your pretty face.
-  </div>
-  <button onclick="nextSlide(2)">Continue →</button>
+<div class="message-box typing">
+Some people come into life slowly…<br>
+and suddenly everything starts feeling lighter.
+</div>
+<button onclick="nextSlide()">Continue →</button>
 </div>
 
 <!-- SLIDE 2 -->
+
 <div class="slide" id="slide2">
-  <div class="note">
-  Having you with me makes me feel like I have an entire world that belongs only to me. I feel special when you spend your precious time with me, when you give me attention, when you love me and take care of me. And all the small gestures you make for me… those sweet letters, those little things you pick knowing I’ll like them, everything that reminds me of you. I feel really blessed to have you in my life. Being with you feels like heaven to me.
-  </div>
-  <button onclick="nextSlide(3)">Continue →</button>
+<div class="message-box typing">
+You became comfort…<br>
+without even trying.
+</div>
+<button onclick="nextSlide()">Continue →</button>
 </div>
 
 <!-- SLIDE 3 -->
+
 <div class="slide" id="slide3">
-  <div class="message-box">
-    somewhere in all this I feel like I’m becoming a better man.
-    The best part is I don’t feel forced to change, I want to.
-    Your presence makes life simpler and calmer,
-    and when you notice my efforts and appreciate the little things,
-    it gives me confidence I never had before.
-  </div>
-
-  <button onclick="nextSlide(4)">Continue →</button>
+<div class="message-box typing">
+Somewhere in all this… I feel like I'm becoming a better man.<br><br>
+Your presence makes life calmer… simpler… and meaningful.
 </div>
-
+<button onclick="nextSlide()">Continue →</button>
+</div>
 
 <!-- SLIDE 4 -->
-<div class="slide" id="slide4">
-  <div class="beat">❤️</div>
-  <div class="note typing">
-    You’ve quietly become a part of my everyday life. You’re the person I want to start my day with and the one I want to end it with. After you came into my life, a lot changed in me — my mindset, my happiness, the way I see things. You brought calm, joy, and a kind of warmth I didn’t have before. And somewhere in all this, I’ve realized I value what we have more than I usually say, and I genuinely want to keep growing into someone better for you and for us.
-  </div>
-  <button onclick="nextSlide(5)">Continue →</button>
-</div>
 
-<!-- SLIDE 5 FINAL -->
-<div class="slide" id="slide5">
-  <div class="speech" id="speech"></div>
-  <div id="buttons" style="margin-top:30px; display:none;">
-    <button onclick="celebrate()">Yes</button>
-    <button onclick="noClick()">No</button>
-    <div style="font-size:12px;margin-top:8px;">* dare to tap this and see what happens *</div>
-  </div>
+<div class="slide" id="slide4">
+<div class="message-box typing">
+You've quietly become a part of my everyday life…<br>
+and honestly… I wouldn't want it any other way.
+</div>
 </div>
 
 <script>
-let current=1;
-function nextSlide(n){
-  document.getElementById('slide'+current).classList.remove('active');
-  document.getElementById('slide'+n).classList.add('active');
-  current=n;
-  if(n===5) startSpeech();
+let current = 1;
+
+function nextSlide(){
+document.getElementById("slide"+current).classList.remove("active");
+current++;
+document.getElementById("slide"+current).classList.add("active");
 }
+
+/* floating hearts */
 
 function createHeart(){
- const h=document.createElement('div');
- h.className='heart';
- h.innerHTML='💗';
- h.style.left=Math.random()*100+'vw';
- h.style.animationDuration=(3+Math.random()*3)+'s';
- document.body.appendChild(h);
- setTimeout(()=>h.remove(),6000);
-}
-setInterval(createHeart,300);
-
-function startSpeech(){
- const lines=[
- "there was something I wanted to ask you",
- "I thought a lot before saying this",
- "because you mean a lot to me",
- "Will you be my Valentine?"
- ];
- let i=0;
- const box=document.getElementById('speech');
- function show(){
-   if(i<lines.length-1){
-     box.innerText=lines[i];
-     i++;
-     setTimeout(()=>{ box.innerText=''; show(); },2000);
-   } else {
-     box.innerText=lines[i];
-     document.getElementById('buttons').style.display='block';
-   }
- }
- show();
+const heart = document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=Math.random()*20+10+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
 }
 
-function noClick(){
- document.body.innerHTML=`
- <div class="bigYes">
- <h1>Will you be my Valentine?</h1>
- <button onclick="celebrate()" style="font-size:24px;padding:20px 40px;">YES</button>
- </div>`;
-}
-
-function celebrate(){
- document.body.innerHTML=`
- <div class="slide active">
- <h2>you just made this day really special for me</h2>
- <h3>happy valentine’s day, my love ❤️</h3>
- </div>`;
-}
+setInterval(createHeart,500);
 </script>
 
 </body>
