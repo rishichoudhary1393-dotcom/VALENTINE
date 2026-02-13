@@ -36,24 +36,6 @@ body {
   to { transform: translateY(110vh); opacity: 0.6; }
 }
 
-/* Drawn white hearts */
-.draw-heart {
-  position: absolute;
-  border: 2px solid white;
-  width: 20px;
-  height: 20px;
-  transform: rotate(45deg);
-  border-radius: 4px;
-  opacity: 0;
-  animation: drawFade 4s ease forwards;
-}
-
-@keyframes drawFade {
-  0% { opacity: 0; transform: scale(0.5) rotate(45deg); }
-  50% { opacity: 1; }
-  100% { opacity: 0; transform: scale(1.4) rotate(45deg); }
-}
-
 .note {
   background: rgba(255,255,255,0.9);
   padding: 25px;
@@ -75,37 +57,7 @@ button {
   cursor: pointer;
 }
 
-/* Envelope */
-.envelope {
-  width: 220px;
-  height: 150px;
-  background: #fff;
-  position: relative;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-  overflow: hidden;
-}
-
-/* 🔧 FIXED HERE — ONLY HEIGHT ISSUE */
-.letter {
-  position: absolute;
-  bottom: -160px;
-  width: 100%;
-  height: auto;
-  min-height: 160px;
-  overflow-y: auto;
-  background: #fff;
-  padding: 15px;
-  font-size: 15px;
-  line-height: 1.4;
-  animation: pullLetter 3s forwards;
-}
-
-@keyframes pullLetter {
-  to { bottom: 0; }
-}
-
-/* 🔧 FIXED HERE — TYPING LINE CUT ISSUE */
+/* Typing fix */
 .typing {
   border-right: none;
   white-space: normal;
@@ -126,7 +78,6 @@ button {
   50%{ transform: scale(1.2); }
 }
 
-/* Speech reveal */
 .speech { font-size: 20px; color:#c2185b; }
 
 .bigYes {
@@ -139,7 +90,6 @@ button {
   justify-content:center;
   flex-direction:column;
 }
-
 </style></head><body>
 
 <!-- SLIDE 1 -->
@@ -162,8 +112,8 @@ button {
   <button onclick="nextSlide(3)">Continue →</button>
 </div>
 
-<!-- SLIDE 3 -->
-  <div class="slide" id="slide3">
+<!-- SLIDE 3 (FIXED — same theme as others, NO envelope) -->
+<div class="slide" id="slide3">
   <div class="note">
     You’ve changed me in ways I never expected. I feel more responsible, more serious about things that matter, and somewhere in all this I feel like I’m becoming a better man. The best part is I don’t feel forced to change, I want to. Your presence makes life feel simpler and calmer, and when you notice my efforts and appreciate the little things I do, it gives me a confidence I never had before.
   </div>
